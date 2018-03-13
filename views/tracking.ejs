@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Price</th>
+                        <th>Check Price</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(items) {%>
+                    <% for (let i = 0; i < items.length; i++) { %>
+                        <tr>
+                            <td><%= items[i].name %></td>
+                            <td><%= items[i].sku %></td>
+                            <td><%= items[i].price %></td>
+                            <td><a href="/tracking/<%= items[i].sku %>/check" class="btn btn-success text-light">Check Price</a></td>
+                            <td><a href="/tracking/<%= items[i].sku %>/delete" class="btn btn-danger text-light">Delete</a></td>
+                        </tr>
+                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

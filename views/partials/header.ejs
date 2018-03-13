@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Price Tracker Web App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+
+        body{
+            background: url("../public/img/store.jpg");
+
+        }
+
+        .navbar-brand img{
+            height: 300px;
+            width: 300px;
+        }
+
+        .navbar .navbar-nav, li, a, h1, h2 {
+            color: white; /*Change active text color here*/
+            }
+
+        .album {
+            min-height: 50rem;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .card {
+            background: #f1f1f1;
+            border-radius: 5px;
+            float: left;
+            width: 30%;
+            padding: .75rem;
+            margin-left: 20px;
+            margin-bottom: 2rem;
+            border: 0;
+        }
+
+        .card>img {
+            margin-bottom: .75rem;
+        }
+
+        .card-text {
+            font-size: 85%;
+        }
+
+        .check {
+            width: 33%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a class="navbar-brand" href="/">PriceTrackerWebApp</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item <% if(path == '/') { %> active <% } %>">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <% if(user == null) { %>
+                    <li class="nav-item <% if(path == '/login') { %> active <% } %>">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <% } %>
+                <% if(user != null) { %>
+                    <li class="nav-item <% if(path == '/tracking') { %> active <% } %>">
+                        <a class="nav-link" href="/tracking">Tracking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                <% } %>
+            </ul>
+            <% if(user != null) { %>
+                <form class="form-inline my-2 my-lg-0" action="/search" method="post">
+                    <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 text-light" type="submit">Search</button>
+                </form>
+                <% } %>
+        </div>
+    </nav>

@@ -1,0 +1,20 @@
+
+
+<%- include('partials/header') %>
+    <div class="album text-muted">
+        <div class="container">
+                <form class="row" action="/tracking" method="post">
+                
+                <% for(let i = 0; i < search.products.length;i++) { %>
+                <div class="card">
+                <img class="img-fluid" width="300" height="300" src="<%= search.products[i].image %>" alt="<%= search.products[i].name %>">
+                <p><%= search.products[i].name %></p>
+                <p><%= search.products[i].shortDescription%></p>
+                <p><%= search.products[i].regularPrice %></p>
+                <button name="addtotrack" value="<%= search.products[i].sku %>,<%= search.products[i].name %>,<%= search.products[i].regularPrice %>" class="btn btn-primary" type="submit">Track This</button>
+                </div>
+                <% } %>
+                </form>
+        </div>
+    </div>
+<%- include('partials/footer') %>

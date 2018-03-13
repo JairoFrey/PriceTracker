@@ -1,0 +1,23 @@
+
+
+<%- include('partials/header') %>
+
+<div class="container">
+    <br>
+    <br>
+    <form class="form-signin" action="/login" method="post">
+        <h2 class="form-signin-heading">Please Log in</h2>
+        <br>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        <br>
+        <small id="emailHelp" class="form-text text-muted">Dont have an account ? <a href="/signup">Click Here</a></small>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

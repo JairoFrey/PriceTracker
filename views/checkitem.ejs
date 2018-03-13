@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center">
+            <br>
+            <br>
+            <h1>Status Of Item <%= checker %></h1>
+            <% if(newprice < currentdbprice) { %>
+            <div class="alert alert-success check" role="alert">
+            <p>Item <%= checker %> is currently cheaper!</p>
+            <p>Was <%= currentdbprice %> Now <%= newprice %></p>
+            </div>
+            <% } %>
+
+            <% if(newprice > currentdbprice) { %>
+            <div class="alert alert-danger check" role="alert"></div>
+            <p>Item <%= checker %> is currently more expensive!</p>
+            <p>Was <%= currentdbprice %> Now <%= newprice %></p>
+            </div>
+            <% } %>
+
+            <% if(newprice == currentdbprice) { %>
+            <div class="alert alert-secondary check" role="alert">
+                <p>Item <%= checker %> is currently the same price!</p>
+                <p>Was <%= currentdbprice %> Now <%= newprice %></p>
+            </div>
+            <% } %>
+
+            <a href="/tracking"  class="btn btn-secondary">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
