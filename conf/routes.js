@@ -1,4 +1,5 @@
 const request = require('request');
+var TrackItem = require("./trackitem");
 
 module.exports = function (app, passport) {
     app.get('/', isLoggedIn, function (req, res) {
@@ -31,6 +32,7 @@ module.exports = function (app, passport) {
         let tosearch = req.params.searchrequest;
 
         let searchreturn;
+console.log(tosearch);
 
         let requesturl = "https://api.bestbuy.com/v1/products((search=";
         requesturl += tosearch;
@@ -46,6 +48,7 @@ module.exports = function (app, passport) {
             }
             else {
                 searchreturn = JSON.parse(body);
+                console.log(searchreturn);
                 res.render("search", {
                     user: req.user,
                     path: req.route.path,
@@ -180,6 +183,7 @@ module.exports = function (app, passport) {
 
     app.post('/search', isLoggedIn, function (req, res) {
         let searchreq = req.body.search;
+        console.log(searchreq);
         res.redirect("/search/" + searchreq);
     });
 
