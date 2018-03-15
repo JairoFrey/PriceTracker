@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3005;
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
@@ -9,10 +9,11 @@ const session = require('express-session');
 const request = require('request');
 const cron = require('node-cron');
 
-mongoose.connect("mongodb://localhost:27017/pricetrackerwebapp?authSource=admin", {
-    user: "beena",
-    pass: "uniqloiscool"
-});
+mongoose.connect("mongodb://localhost/pricetrackerwebapp")
+// ?authSource=admin", {
+// //     user: "jayro15",
+// //     pass: "Sophie#12"
+// // });
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +46,7 @@ cron.schedule('0 0 */4 * * *', function () {
                 requr += "apiKey=xPiU10xEJA2LLkNMhxQ9GeDr";
                 requr += "&sort=regularPrice.asc&show=regularPrice";
                 requr += "&pageSize=1&format=json";
-
+console.log(requr);
                 request(requr, function (err, response, body) {
                     if (err) {
                         console.log(err);
@@ -71,7 +72,7 @@ cron.schedule('0 0 */4 * * *', function () {
 
 app.listen(port, function (err) {
     if (!err) {
-        console.log("Price Tracker Web App Active On Port 3000");
+        console.log("Price Tracker Web App Active On Port 3005");
     }
     else {
         console.log(err);
